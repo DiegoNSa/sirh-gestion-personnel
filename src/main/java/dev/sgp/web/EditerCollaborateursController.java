@@ -37,7 +37,14 @@ public class EditerCollaborateursController extends HttpServlet {
 					+ ((nom == null)?"nom,":"")
 					+ ((prenom == null)?"prenom,":""));
 	    }else {
-	    	res.setStatus(201, "Creation d’un collaborateur avec les informations suivantes :"
+	    	res.getWriter().write("Creation d’un collaborateur avec les informations suivantes : <ul>"
+	    			+ "<li>" +"matricule=" + matricule +"</li>"
+	    			+ "<li>" +"titre=" + titre +"</li>"
+	    			+ "<li>" +"nom=" + nom +"</li>"
+	    			+ "<li>" +"prenom="+prenom +"</li>"
+	    			+ "</ul>");
+
+	    	res.setStatus(201,"Creation d’un collaborateur avec les informations suivantes :"
 	    			+ "matricule=" + matricule + ",titre=" + titre + ",nom=" + nom + ",prenom="+prenom);
 	    }
 	}
