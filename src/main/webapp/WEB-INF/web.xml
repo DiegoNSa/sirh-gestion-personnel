@@ -64,4 +64,8 @@
 		<servlet-name>AjouterCollaborateursController</servlet-name>
 		<url-pattern>/collaborateurs/ajouter</url-pattern>
 	</servlet-mapping>
+	
+	<listener>
+		<listener-class>dev.sgp.listener.CompteurSessionListener</listener-class>
+	</listener>
 </web-app>

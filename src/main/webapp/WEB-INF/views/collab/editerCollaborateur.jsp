@@ -2,7 +2,6 @@
 <%@page import="dev.sgp.entite.Collaborateur"%>
 <%@page import="dev.sgp.entite.Departement"%>
 <%@ page isELIgnored="false"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -33,9 +32,8 @@
 						alt="photo" style="max-width: 300px;">
 				</div>
 				<div class="col">
-					<h1>
-						<c:out value="${currentCollaborateur.prenom}"/>
-						<c:out value="${currentCollaborateur.prenom}"/></h1>
+					<h1><%=currentCollab.getNom()%>
+						<%=currentCollab.getPrenom()%></h1>
 					<div class="accordion" id="accordionExample">
 						<div class="card">
 							<div class="card-header" id="headingOne">
