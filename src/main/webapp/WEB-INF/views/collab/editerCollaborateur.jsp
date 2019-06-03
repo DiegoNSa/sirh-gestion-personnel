@@ -68,7 +68,7 @@
 										<div class="col-sm">Date de naissance</div>
 										<div class="col-sm">
 											<input type="text" name="date"
-												value="<%=currentCollab.getDateDeNaissance()%>" readonly>
+												value="<%=currentCollab.getDateDeNaissance()%>">
 										</div>
 									</div>
 									<br>
@@ -108,8 +108,8 @@
 									<div class="row justify-content-between">
 										<div class="col-sm">Intitulé Poste</div>
 										<div class="col-sm">
-											<input type="text" name="nom"
-												value="<%=currentCollab.getIntitulePoste()%>" readonly>
+											<input type="text" name="intitule"
+												value="<%=currentCollab.getIntitulePoste()%>">
 										</div>
 									</div>
 								</div>
@@ -130,24 +130,24 @@
 									<div class="row justify-content-between">
 										<div class="col-sm">Banque</div>
 										<div class="col-sm">
-											<input type="text" name="nom"
-												value="<%=currentCollab.getIntitulePoste()%>" readonly>
+											<input type="text" name="banque"
+												value="<%=currentCollab.getBanque()%>">
 										</div>
 									</div>
 									<br>
 									<div class="row justify-content-between">
 										<div class="col-sm">Bic</div>
 										<div class="col-sm">
-											<input type="text" name="nom"
-												value="<%=currentCollab.getIntitulePoste()%>" readonly>
+											<input type="text" name="bic"
+												value="<%=currentCollab.getBic()%>">
 										</div>
 									</div>
 									<br>
 									<div class="row justify-content-between">
 										<div class="col-sm">Iban</div>
 										<div class="col-sm">
-											<input type="text" name="nom"
-												value="<%=currentCollab.getIntitulePoste()%>" readonly>
+											<input type="text" name="iban"
+												value="<%=currentCollab.getIban()%>">
 										</div>
 									</div>
 								</div>
@@ -155,6 +155,9 @@
 						</div>
 					</div>
 					<input type="submit" value="Sauvegarder">
+					<div class="invisible">
+  						<input type="text" name="matricule" value="<%=currentCollab.getMatricule()%>" readonly>
+  					</div>
 				</div>
 			</div>
 		</div>

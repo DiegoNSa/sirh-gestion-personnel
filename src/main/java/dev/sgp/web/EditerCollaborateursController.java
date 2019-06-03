@@ -32,11 +32,6 @@ public class EditerCollaborateursController extends HttpServlet {
 			req.setAttribute("currentCollaborateur", collaborateurAEditer);
 
 			req.getRequestDispatcher("/WEB-INF/views/collab/editerCollaborateur.jsp").forward(req, resp);
-			// recupere la valeur d'un parametre dont le nom est departement
-			//resp.setContentType("text/html");
-			// code HTML ecrit dans le corps de la reponse
-			//resp.getWriter().write("<h1>Edition de collaborateurs</h1>"
-			//		+ "<p><b>Matricule : " + matriculeParam + "</b></p>");
 		}
 	}
 	
@@ -44,25 +39,35 @@ public class EditerCollaborateursController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse res)
 	throws ServletException, IOException {
 	    String matricule = req.getParameter("matricule");
-	    String titre = req.getParameter("titre");
 	    String nom = req.getParameter("nom");
 	    String prenom = req.getParameter("prenom");
-	    if(matricule == null || titre == null || nom == null || prenom == null) {
+	    if(matricule == null || nom == null || prenom == null) {
 			res.sendError(404,"Les paramètres suivants sont incorrects :"
 					+ ((matricule == null)?"matricule,":"")
-					+ ((titre == null)?"titre,":"")
 					+ ((nom == null)?"nom,":"")
 					+ ((prenom == null)?"prenom,":""));
 	    }else {
-	    	res.getWriter().write("Creation d’un collaborateur avec les informations suivantes : <ul>"
-	    			+ "<li>" +"matricule=" + matricule +"</li>"
-	    			+ "<li>" +"titre=" + titre +"</li>"
-	    			+ "<li>" +"nom=" + nom +"</li>"
-	    			+ "<li>" +"prenom="+prenom +"</li>"
-	    			+ "</ul>");
+	    	String banque = req.getParameter("banque");
+		    String iban = req.getParameter("iban");
+		    String bic = req.getParameter("bic");
+		    String intitulePoste = req.getParameter("intitule");
 
-	    	res.setStatus(201,"Creation d’un collaborateur avec les informations suivantes :"
-	    			+ "matricule=" + matricule + ",titre=" + titre + ",nom=" + nom + ",prenom="+prenom);
+		    
+	    	
+			List<Collaborateur> listCollab = collabService.listerCollaborateurs();
+			Collaborateur collaborateurAEditer = null;
+			for( Collaborateur c : listCollab) {
+				if(c.getMatricule().equals(matricule)) {
+					collaborateurAEditer = c;
+				}
+			}
+			collaborateurAEditer.setBanque(banque);
+			collaborateurAEditer.setBic(bic);
+			collaborateurAEditer.setIban(iban);
+			collaborateurAEditer.setIntitulePoste(intitulePoste);
+			
+			
+	    	res.sendRedirect("http://localhost:8080/sgp/collaborateurs/lister"); 
 	    }
 	}
 }

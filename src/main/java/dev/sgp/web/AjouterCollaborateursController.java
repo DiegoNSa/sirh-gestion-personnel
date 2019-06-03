@@ -55,7 +55,10 @@ public class AjouterCollaborateursController extends HttpServlet {
 	    	
 	    	newCollaborateur.setMatricule("M-" + (collabService.listerCollaborateurs().size() + 1));
 
-	    	
+	    	newCollaborateur.setBanque("");
+	    	newCollaborateur.setIban("");
+	    	newCollaborateur.setBic("");
+
 	    	collabService.sauvegarderCollaborateur(newCollaborateur);
 	    	resp.sendRedirect("http://localhost:8080/sgp/collaborateurs/lister"); 
 	    	//req.getRequestDispatcher("/collaborateurs/lister").forward(req, resp);
